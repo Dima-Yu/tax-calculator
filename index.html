@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+    .form-item {
+      margin-bottom: 20px;
+    }
+    .form-item--label {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <form>
+    <div class="form-item">
+      <label class="form-item--label">Вартість авто в ЄВРО</label>
+      <input type="text" class="car-value">
+    </div>
+    <div class="form-item">
+      <label class="form-item--label">Вік, повних років</label>
+      <input type="text" class="car-age">
+    </div>
+    <div class="form-item">
+      <label class="form-item--label">Об'єм двигуна cm3</label>
+      <input type="text" class="engine-capacity">
+    </div>
+    <div class="form-item">
+      <label class="form-item--label">Тип двигуна</label>
+      <select class="engine-type">
+        <option disabled selected>Виберіть</option>
+        <option value="gas">Бензин</option>
+        <option value="diesel">Пальне сатани</option>
+      </select>
+    </div>
+  </form>
+
+  <table>
+    <tr>
+      <th>Платежі</th>
+      <th>Основа нарахування</th>
+      <th>Ставка</th>
+      <th>Сума</th>
+    </tr>
+    <tr>
+      <td><strong>Мито</strong></td>
+      <td class="js-car-value">0</td>
+      <td>10%</td>
+      <td class="js-total-rate">0</td>
+    </tr>
+    <tr>
+      <td><strong>Акциз</strong></td>
+      <td class="js-engine-capacity">см3</td>
+      <td class="js-excise-rate">0€</td>
+      <td class="js-total-excise">0</td>
+    </tr>
+    <tr>
+      <td><strong>ПДВ</strong></td>
+      <td class="js-income-tax-basis">0</td>
+      <td>20%</td>
+      <td class="js-total-income-tax">0</td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        Всього ЄВРО
+        <strong class="js-total-value">0</strong>
+      </td>
+    </tr>
+  </table>
+
+<script src="script.js"></script>
+</body>
+</html>
