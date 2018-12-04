@@ -9,14 +9,16 @@ function calcTax() {
   var engineTypeField = document.querySelector('.engine-type');
   var calcBtn = document.querySelector('.js-calc-btn');
 
-  var carValueCell = document.querySelector('.js-car-value');
-  var engineCapacityCell = document.querySelector('.js-engine-capacity');
-  var totalRateCell = document.querySelector('.js-total-rate');
-  var exciseRateCell = document.querySelector('.js-excise-rate');
-  var totalExciseCell = document.querySelector('.js-total-excise');
-  var incomeTaxBasisCell = document.querySelector('.js-income-tax-basis');
-  var totalIncomeTaxCell = document.querySelector('.js-total-income-tax');
-  var totalValueCell = document.querySelector('.js-total-value');
+  var resultTableCell = {
+    carValue: document.querySelector('.js-car-value'),
+    engineCapacity: document.querySelector('.js-engine-capacity'),
+    totalRate: document.querySelector('.js-total-rate'),
+    exciseRate: document.querySelector('.js-excise-rate'),
+    totalExcise: document.querySelector('.js-total-excise'),
+    incomeTaxBasis: document.querySelector('.js-income-tax-basis'),
+    totalIncomeTax: document.querySelector('.js-total-income-tax'),
+    totalValue: document.querySelector('.js-total-value')
+  }
 
   var params = {
     carValue: null,
@@ -68,14 +70,14 @@ function calcTax() {
   }
 
   function updateDataTable() {
-    carValueCell.innerHTML = params.carValue;
-    engineCapacityCell.innerHTML = params.engineCapacity + ' cm3';
-    exciseRateCell.innerHTML = params.exciseRate + '€';
-    totalRateCell.innerHTML = totals.fee;
-    totalExciseCell.innerHTML = totals.exice;
-    incomeTaxBasisCell.innerHTML = params.incomeTaxBasis;
-    totalIncomeTaxCell.innerHTML = params.incomeTaxBasis;
-    totalValueCell.innerHTML = totals.value;
+    resultTableCell.carValue.innerHTML = params.carValue;
+    resultTableCell.engineCapacity.innerHTML = params.engineCapacity + ' cm3';
+    resultTableCell.exciseRate.innerHTML = params.exciseRate + '€';
+    resultTableCell.totalRate.innerHTML = totals.fee;
+    resultTableCell.totalExcise.innerHTML = totals.exice;
+    resultTableCell.incomeTaxBasis.innerHTML = params.incomeTaxBasis;
+    resultTableCell.totalIncomeTax.innerHTML = params.incomeTaxBasis;
+    resultTableCell.totalValue.innerHTML = totals.value;
   }
 
   function calculate(){
