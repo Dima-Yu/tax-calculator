@@ -23,16 +23,21 @@ function calcTax() {
   var engineCapacity;
   var engineType;
   var exciseRate;
-  var incomeTaxBasis;
+  var incomeTaxBasis
   const rateOfFee = 0.1;
   const incomeTax = 0.2;
 
-  var totalFee;
-  var totalExice;
-  var totalIncomeTax;
-  var totalValue;
+  // var totalFee;
+  // var totalExice;
+  // var totalIncomeTax;
+  // var totalValue;
 
-
+  var totals = {
+    totalFee: null,
+    totalExice: null,
+    totalIncomeTax: null,
+    totalValue: null,
+  }
 
   carValueField.onblur = function(){carValue = this.value;}
   carAgeField.onblur = function(){carAge = this.value;}
@@ -44,20 +49,20 @@ function calcTax() {
   }
 
   function feeCalc() {
-    totalFee = carValue * rateOfFee;
+    totals.totalFee = carValue * rateOfFee;
   }
 
   function exiceCalc() {
-    totalExice = exciseRate * (engineCapacity / 1000) * carAge;
+    totals.totalExice = exciseRate * (engineCapacity / 1000) * carAge;
   }
 
   function incomeTaxCalc() {
-    incomeTaxBasis = + carValue + totalFee + totalExice;
-    totalIncomeTax = incomeTaxBasis * incomeTax;
+    incomeTaxBasis = + carValue + totals.totalFee + totals.totalExice;
+    totals.totalIncomeTax = incomeTaxBasis * incomeTax;
   }
 
   function totalValueCalc() {
-    totalValue = totalFee + totalExice + totalIncomeTax;
+    totals.totalValue = totals.totalFee + totals.totalExice + totals.totalIncomeTax;
   }
 
   calcBtn.onclick = function() {
@@ -69,11 +74,11 @@ function calcTax() {
     carValueCell.innerHTML = carValue;
     engineCapacityCell.innerHTML = engineCapacity + ' cm3';
     exciseRateCell.innerHTML = exciseRate + '€';
-    totalRateCell.innerHTML = totalFee;
-    totalExciseCell.innerHTML = totalExice;
+    totalRateCell.innerHTML = totals.totalFee;
+    totalExciseCell.innerHTML = totals.totalExice;
     incomeTaxBasisCell.innerHTML = incomeTaxBasis;
     totalIncomeTaxCell.innerHTML = incomeTaxBasis;
-    totalValueCell.innerHTML = totalValue;
+    totalValueCell.innerHTML = totals.totalValue;
   }
 
   function calculate(){
