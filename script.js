@@ -18,42 +18,44 @@ function calcTax() {
   var totalIncomeTaxCell = document.querySelector('.js-total-income-tax');
   var totalValueCell = document.querySelector('.js-total-value');
 
-  var carValue;
-  var carAge;
-  var engineCapacity;
-  var engineType;
-  var exciseRate;
-  var incomeTaxBasis
-  const rateOfFee = 0.1;
-  const incomeTax = 0.2;
+  var params = {
+    carValue: null,
+    carAge: null,
+    engineCapacity: null,
+    engineType: null,
+    exciseRate: null,
+    incomeTaxBasis: null,
+    rateOfFee: 0.1,
+    incomeTax: 0.2
+  }
 
   var totals = {
     fee: null,
     exice: null,
     incomeTax: null,
-    value: null,
+    value: null
   }
 
-  carValueField.onblur = function(){carValue = this.value;}
-  carAgeField.onblur = function(){carAge = this.value;}
-  engineCapacityField.onblur = function(){engineCapacity = this.value;}
+  carValueField.onblur = function(){params.carValue = this.value;}
+  carAgeField.onblur = function(){params.carAge = this.value;}
+  engineCapacityField.onblur = function(){params.engineCapacity = this.value;}
 
   engineTypeField.onchange = function(){
     var selectedOption = this.options[this.selectedIndex].value;
-    exciseRate = selectedOption == 'gas' ? 50 : 75;
+    params.exciseRate = selectedOption == 'gas' ? 50 : 75;
   }
 
   function feeCalc() {
-    totals.fee = carValue * rateOfFee;
+    totals.fee = params.carValue * params.rateOfFee;
   }
 
   function exiceCalc() {
-    totals.exice = exciseRate * (engineCapacity / 1000) * carAge;
+    totals.exice = params.exciseRate * (params.engineCapacity / 1000) * params.carAge;
   }
 
   function incomeTaxCalc() {
-    incomeTaxBasis = + carValue + totals.fee + totals.exice;
-    totals.incomeTax = incomeTaxBasis * incomeTax;
+    params.incomeTaxBasis = + params.carValue + totals.fee + totals.exice;
+    totals.incomeTax = params.incomeTaxBasis * params.incomeTax;
   }
 
   function totalValueCalc() {
@@ -66,13 +68,13 @@ function calcTax() {
   }
 
   function updateDataTable() {
-    carValueCell.innerHTML = carValue;
-    engineCapacityCell.innerHTML = engineCapacity + ' cm3';
-    exciseRateCell.innerHTML = exciseRate + '€';
+    carValueCell.innerHTML = params.carValue;
+    engineCapacityCell.innerHTML = params.engineCapacity + ' cm3';
+    exciseRateCell.innerHTML = params.exciseRate + '€';
     totalRateCell.innerHTML = totals.fee;
     totalExciseCell.innerHTML = totals.exice;
-    incomeTaxBasisCell.innerHTML = incomeTaxBasis;
-    totalIncomeTaxCell.innerHTML = incomeTaxBasis;
+    incomeTaxBasisCell.innerHTML = params.incomeTaxBasis;
+    totalIncomeTaxCell.innerHTML = params.incomeTaxBasis;
     totalValueCell.innerHTML = totals.value;
   }
 
