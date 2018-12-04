@@ -3,11 +3,14 @@ function init() {
 }
 
 function calcTax() {
-  var carValueField = document.querySelector('.car-value');
-  var carAgeField = document.querySelector('.car-age');
-  var engineCapacityField = document.querySelector('.engine-capacity');
-  var engineTypeField = document.querySelector('.engine-type');
-  var calcBtn = document.querySelector('.js-calc-btn');
+
+  var formField = {
+    carValue: document.querySelector('.car-value'),
+    carAge: document.querySelector('.car-age'),
+    engineCapacity: document.querySelector('.engine-capacity'),
+    engineType: document.querySelector('.engine-type'),
+    calcBtn: document.querySelector('.js-calc-btn')
+  }
 
   var resultTableCell = {
     carValue: document.querySelector('.js-car-value'),
@@ -38,11 +41,11 @@ function calcTax() {
     value: null
   }
 
-  carValueField.onblur = function(){params.carValue = this.value;}
-  carAgeField.onblur = function(){params.carAge = this.value;}
-  engineCapacityField.onblur = function(){params.engineCapacity = this.value;}
+  formField.carValue.onblur = function(){params.carValue = this.value;}
+  formField.carAge.onblur = function(){params.carAge = this.value;}
+  formField.engineCapacity.onblur = function(){params.engineCapacity = this.value;}
 
-  engineTypeField.onchange = function(){
+  formField.engineType.onchange = function(){
     var selectedOption = this.options[this.selectedIndex].value;
     params.exciseRate = selectedOption == 'gas' ? 50 : 75;
   }
@@ -64,7 +67,7 @@ function calcTax() {
     totals.value = totals.fee + totals.exice + totals.incomeTax;
   }
 
-  calcBtn.onclick = function() {
+  formField.calcBtn.onclick = function() {
     calculate();
     updateDataTable();
   }
