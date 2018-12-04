@@ -29,7 +29,6 @@ function calcTax() {
     engineCapacity: null,
     engineType: null,
     exciseRate: null,
-    incomeTaxBasis: null,
     rateOfFee: 0.1,
     incomeTax: 0.2
   }
@@ -37,6 +36,7 @@ function calcTax() {
   var totals = {
     fee: null,
     exice: null,
+    incomeTaxBasis: null,
     incomeTax: null,
     value: null
   }
@@ -59,8 +59,8 @@ function calcTax() {
   }
 
   function incomeTaxCalc() {
-    params.incomeTaxBasis = + params.carValue + totals.fee + totals.exice;
-    totals.incomeTax = params.incomeTaxBasis * params.incomeTax;
+    totals.incomeTaxBasis = + params.carValue + totals.fee + totals.exice;
+    totals.incomeTax = totals.incomeTaxBasis * params.incomeTax;
   }
 
   function totalValueCalc() {
@@ -78,8 +78,8 @@ function calcTax() {
     resultTableCell.exciseRate.innerHTML = params.exciseRate + '€';
     resultTableCell.totalRate.innerHTML = totals.fee;
     resultTableCell.totalExcise.innerHTML = totals.exice;
-    resultTableCell.incomeTaxBasis.innerHTML = params.incomeTaxBasis;
-    resultTableCell.totalIncomeTax.innerHTML = params.incomeTaxBasis;
+    resultTableCell.incomeTaxBasis.innerHTML = totals.incomeTaxBasis;
+    resultTableCell.totalIncomeTax.innerHTML = totals.incomeTax;
     resultTableCell.totalValue.innerHTML = totals.value;
   }
 
