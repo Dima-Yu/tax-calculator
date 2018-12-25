@@ -20,19 +20,19 @@
   <form>
     <div class="form-item">
       <label class="form-item--label">Вартість авто в ЄВРО</label>
-      <input type="text" class="car-value">
+      <input type="text" class="car-value js-input">
     </div>
     <div class="form-item">
       <label class="form-item--label">Вік, повних років</label>
-      <input type="text" class="car-age">
+      <input type="text" class="car-age js-input">
     </div>
     <div class="form-item">
       <label class="form-item--label">Об'єм двигуна cm3</label>
-      <input type="text" class="engine-capacity">
+      <input type="text" class="engine-capacity js-input">
     </div>
     <div class="form-item">
       <label class="form-item--label">Тип двигуна</label>
-      <select class="engine-type">
+      <select class="engine-type js-input">
         <option disabled selected>Виберіть</option>
         <option value="gas">Бензин</option>
         <option value="diesel">Пальне сатани</option>
@@ -76,6 +76,8 @@
     </tr>
   </table>
 
-<script src="script.js"></script>
+  <script src="collect_data.js"></script>
+  <script src="calculation.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
